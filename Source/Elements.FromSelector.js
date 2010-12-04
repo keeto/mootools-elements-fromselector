@@ -32,7 +32,7 @@ Elements.fromSelector = function(str){
 				element = new Element(current.tag == '*' ? 'div' : current.tag);
 			if (current.classList) element.set('class', current.classList.join(' '));
 			if (current.attributes){
-				for (var attrs = current.attributes, attrslen = attrs.length; attlen--;){
+				for (var attrs = current.attributes, attrslen = attrs.length; attrslen--;){
 					var attr = attrs[attrslen];
 					if (attr.value != null && attr.operator == '=') element.set(attr.key, attr.value);
 				}
