@@ -47,7 +47,7 @@ Combinators:
 
 	// HTML
 	<div>
-		<p><em>Hello</em><strong>World</strong><p>
+		<p><em>Hello</em><strong>World</strong></p>
 	</div>
 
 Reverse Combinators:
@@ -57,7 +57,7 @@ Reverse Combinators:
 
 	// HTML
 	<div>
-		<p><em>Hello World</em><p>
+		<p><em>Hello World</em></p>
 	</div>
 
 
@@ -65,8 +65,10 @@ Implementation Notes
 --------------------
 
 - This function always returns an `Elements` instance--regardless of whether there were elements created.
-- Like the `Element` constructor, the `fromSelector` function uses `Slick.parse` internally to process the selector string.
-- Attribute values are only processed if the equality operator for the attribute selector is `=` (also like `Element`).
+- The implementation follows the design decisions from the `Element` constructor (1.3):
+  - The `fromSelector` function uses `Slick.parse` internally to process the selector string.
+  - Attribute values are only processed if the equality operator for the attribute selector is `=`. All other operators are ignored.
+  - Attribute selectors are passed to `Element.set`, so all dynamic setters are supported (so long as they allow for string values).
 - The builder only understands the descendant, child and sibling combinators and their corresponding reverse combinators. Special combinators are not implemented (yet?).
 - The descendant and child combinators (` ` and `>`) are treated as the same combinator by the builder. Likewise, the reverse descendant and reverse child combinators are also treated as the same.
 

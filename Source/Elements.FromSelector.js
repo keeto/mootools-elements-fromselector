@@ -38,14 +38,14 @@ Elements.fromSelector = function(str){
 				}
 			}
 			switch (current.combinator){
-				 case '+':
+				case '+':
 					element.inject(previousElement, 'after'); break;
-				 case '!+':
-					 element.inject(previousElement, 'before'); break;
-				 case '!>':
-				 case '!':
-					 element.wraps(previousElement); break;
-				 default:
+				case '!+':
+					element.inject(previousElement, 'before'); break;
+				case '!>':
+				case '!':
+					element.wraps(previousElement); break;
+				default:
 					element.inject(previousElement, 'top'); break;
 			}
 			previousElement = element;
